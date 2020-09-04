@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "product-catalogue"
+    }
+  },
+  "defaultProject": "product-catalogue",
+  "cli": {
+    "analytics": false
+  }
 }
