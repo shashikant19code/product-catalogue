@@ -1,0 +1,24 @@
+<header>
+    <nav class="nav-container">
+        <div (click)="navigateTo('home')" class="image-container">
+            <img src="" alt="logo">
+        </div>
+        <div class="nav-list">
+            <ul class="list">
+                <li (click)="navigateTo('add-product')"><a>Add Product</a></li>
+                <li class="profile">
+                    <a (click)="navigateTo('login')">Account</a>
+                    <div class="popup off">
+                        <div class="popup-container">
+                            <div class="option login">Login</div>
+                            <div class="option logout">Logout</div>
+                            <div class="option profile">profile</div>
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</header>

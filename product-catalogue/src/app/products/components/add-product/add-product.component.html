@@ -1,0 +1,32 @@
+<section>
+        <div class="form-container">
+            <div class="form add-product-form" >
+                <form [formGroup]="productForm">
+                    <div class="title">
+                        <h2 *ngIf="!isEditProduct">ADD PRODUCT</h2>
+                        <h2 *ngIf="isEditProduct">UPDATE PRODUCT</h2>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="productName" formControlName="productName" placeholder="Product Name" />
+                    </div>
+                    <div class="form-input">
+                        <input type="textarea" name="description"  formControlName="productDesc" placeholder="Description" />
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="type"   formControlName="productType" placeholder="Product Type" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="code"   formControlName="productCode" placeholder="Product code" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="price"  formControlName="productPrice" placeholder="Price" />
+                    </div>
+                    <div class="button-container">
+                        <button *ngIf="!isEditProduct" type="submit" (click)="addProduct()">ADD</button>
+                        <button *ngIf="isEditProduct" type="submit" (click)="addProduct()">UPDATE</button>
+                    </div>  
+                </form>
+                
+            </div>
+        </div>
+    </section>

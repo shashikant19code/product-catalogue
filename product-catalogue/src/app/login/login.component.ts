@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ButtonElement } from './button.element';
 
 @Component({
   selector: 'app-login',

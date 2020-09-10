@@ -1,0 +1,19 @@
+@import "../../../../assets/scss/BreakPoint.scss";
+@import "../../../../assets/scss/Variable.scss";
+
+* {
+    box-sizing: border-box;
+  }
+  
+
+.theme-container.dark{
+    @include theme-colors($light-theme: false)
+}
+.theme-container.light{
+    @include theme-colors($light-theme: true);
+}
+
+.main-container{
+    height: 100vh;
+    // background-color: ;
+}
