@@ -1,37 +1,39 @@
- <section>
-        <div class="form-container">
-            <div class="form sign-form" >
-                <form>
-                    <div class="title">
-                        <h2>SIGN UP</h2>
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="firstName" placeholder="First Name" />
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="lastName" placeholder="Last Name" />
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="email" placeholder="Email" />
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="mobileNumber" placeholder="Mobile Number" />
-                    </div>
-                    <div class="form-input">
-                        <input type="text" name="address" placeholder="Address" />
-                    </div>
-                    <div class="form-input">
-                        <input type="password" name="password" placeholder="Password" />
-                    </div>
-                    <div class="form-input">
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" />
-                    </div>
-                    
-                    <div class="button-container">
-                        <button type="submit">SIGN IN</button>
-                    </div>  
-                </form>
-                
-            </div>
+<section>
+    <div class="form-container">
+        <div class="form sign-form">
+            <form [formGroup]="userForm">
+                <div class="title">
+                    <h2>SIGN UP</h2>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="firstName" formControlName="firstName" placeholder="First Name" />
+                </div>
+                <div class="form-input">
+                    <input type="text" name="lastName" formControlName="lastName" placeholder="Last Name" />
+                </div>
+                <div class="form-input">
+                    <input type="text" name="email" formControlName="email" placeholder="Email" />
+                </div>
+                <div class="form-input">
+                    <input type="number" name="mobileNumber" formControlName="mobileNumber"
+                        placeholder="Mobile Number" />
+                </div>
+                <div class="form-input">
+                    <input type="text" name="address" formControlName="address" placeholder="Address" />
+                </div>
+                <div class="form-input">
+                    <input type="password" name="password" formControlName="password" placeholder="Password" />
+                </div>
+                <div class="form-input">
+                    <input type="password" name="confirmPassword" formControlName="confirmPassword"
+                        placeholder="Confirm Password" />
+                </div>
+                <span *ngIf="error" [ngStyle]="{'color': 'red'}">{{error}}</span>
+                <div class="button-container">
+                    <button (click)="registerUser()" [disabled]="!userForm.valid" type="submit">SIGN IN</button>
+                </div>
+            </form>
+
         </div>
-    </section>
+    </div>
+</section>

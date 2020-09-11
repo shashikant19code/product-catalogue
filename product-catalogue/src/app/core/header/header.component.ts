@@ -7,10 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public isShow = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+        this.isShow = true;
+    }
   }
 
   /**
@@ -18,6 +23,14 @@ export class HeaderComponent implements OnInit {
   */
   public navigateTo(tab): void {
     this.router.navigate([tab]);
+  }
+
+  /**
+   * logout: Logout the user.
+   */
+  public logout() {
+    localStorage.removeItem('accessToken');
+    this.router.navigate(['login']);
   }
 
 }

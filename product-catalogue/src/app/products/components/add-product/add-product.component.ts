@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { ProductService } from './../../../service/product.service';
+import { ProductService } from './../../service/product.service';
 import { AppState } from './../../../app.model';
 import { getProductListInOrder } from '../../store/products.selector';
 import { GetProductsList } from '../../store/products.action';

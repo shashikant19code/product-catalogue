@@ -6,6 +6,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { InteriorPageComponent } from './../core/components/interior-page/interior-page.component';
 
+import { AuthGuard } from './../auth/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +24,8 @@ const routes: Routes = [
       },
       {
         path: 'add-product',
-        component: AddProductComponent
+        component: AddProductComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'view-details/:id',
@@ -30,7 +33,8 @@ const routes: Routes = [
       },
       {
         path: 'edit-product/:id',
-        component: AddProductComponent
+        component: AddProductComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

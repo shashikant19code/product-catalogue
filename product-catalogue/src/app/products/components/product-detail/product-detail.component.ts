@@ -4,7 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AppState } from './../../../app.model';
-import { ProductService } from '../../../service/product.service';
+import { ProductService } from '../../service/product.service';
 import { getProductListInOrder } from '../../store/products.selector';
 
 @Component({

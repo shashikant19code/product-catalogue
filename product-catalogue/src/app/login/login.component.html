@@ -18,19 +18,23 @@
 <section>
         <div class="form-container">
             <div class="form login-form" >
-                <form>
+                <form [formGroup]="loginForm">
                     <div class="title">
                         <h2>LOGIN</h2>
                     </div>
                     <div class="form-input">
-                        <input type="text" name="email" placeholder="Email" />
+                        <input type="text" name="email"  formControlName="email" placeholder="Email" />
                     </div>
                     <div class="form-input">
-                        <input type="password" name="password" placeholder="Password" />
+                        <input type="password" name="password" formControlName="password" placeholder="Password" />
                     </div>
+                    <span *ngIf="error" [ngStyle]="{'color': 'red'}">{{error}}</span>
                     <div class="button-container">
-                        <button type="submit">LOGIN</button>
+                        <button (click)="login()" type="submit">LOGIN</button>
                     </div>  
+                    <div class="button-container">
+                        <button (click)="signUp()" type="submit">SIGN UP</button>
+                    </div>
                 </form>
                 
             </div>

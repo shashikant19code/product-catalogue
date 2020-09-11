@@ -7,8 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 
-import { ProductsModule } from './products/products.module';
-
 import { ProductsReducer } from './products/store/products.reducer';
 import { ProductsListEffect } from './products/store/products.effects';
 
@@ -17,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { InteriorPageComponent } from './core/components/interior-page/interior-page.component';
 import { HeaderComponent } from './core/header/header.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+
+import { CoreService } from './../app/core/service/core.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
       name: 'Store DevTools',
     }),
   ],
-  providers: [],
+  providers: [CoreService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

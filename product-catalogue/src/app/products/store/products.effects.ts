@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { switchMap, map } from 'rxjs/operators';
 import { GetProductsList, GetProductsListSuccess, ProductsActionType } from './products.action';
-import { ProductService } from './../../service/product.service';
+import { ProductService } from './../service/product.service';
 
 
 @Injectable()

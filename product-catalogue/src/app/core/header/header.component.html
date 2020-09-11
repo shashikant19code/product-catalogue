@@ -5,9 +5,9 @@
         </div>
         <div class="nav-list">
             <ul class="list">
-                <li (click)="navigateTo('add-product')"><a>Add Product</a></li>
+                <li *ngIf="isShow" (click)="navigateTo('add-product')"><a>Add Product</a></li>
                 <li class="profile">
-                    <a (click)="navigateTo('login')">Account</a>
+                    <a (click)="logout()">Account</a>
                     <div class="popup off">
                         <div class="popup-container">
                             <div class="option login">Login</div>

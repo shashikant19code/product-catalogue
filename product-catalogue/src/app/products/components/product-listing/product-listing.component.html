@@ -14,7 +14,7 @@
                         </div>
                         <div class="subtitle">
                             <label>product details</label>
-                            <div class="edit">
+                            <div *ngIf="isShow" class="edit">
                                 <img (click)="editSelectedProduct($event,product)" src="" alt="edit">
                                 <img (click)="deleteSelectedProduct($event,product)" src="" alt="delete">
                             </div>
@@ -26,4 +26,123 @@
             </div>
         </div>
     </section>
+    <!-- <section>
+        <div class="form-container">
+            <div class="form login-form" >
+                <form>
+                    <div class="title">
+                        <h2>LOGIN</h2>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="email" placeholder="Email" />
+                    </div>
+                    <div class="form-input">
+                        <input type="password" name="password" placeholder="Password" />
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">LOGIN</button>
+                    </div>  
+                </form>
+                
+            </div>
+        </div>
+    </section> -->
+    <!-- <section>
+        <div class="form-container">
+            <div class="form add-product-form" >
+                <form>
+                    <div class="title">
+                        <h2>ADD PRODUCT</h2>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="productName" placeholder="Product Name" />
+                    </div>
+                    <div class="form-input">
+                        <input type="textarea" name="description" placeholder="Description" />
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="type" placeholder="Product Type" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="code" placeholder="Product code" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="price" placeholder="Price" />
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">ADD</button>
+                    </div>  
+                </form>
+                
+            </div>
+        </div>
+    </section> -->
+    <!-- <section>
+        <div class="form-container">
+            <div class="form edit-product-form" >
+                <form>
+                    <div class="title">
+                        <h2>EDIT PRODUCT</h2>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="productName" placeholder="Product Name" />
+                    </div>
+                    <div class="form-input">
+                        <input type="textarea" name="description" placeholder="Description" />
+                    </div>
+                    <div class="form-input">
+                        <input type="text" name="type" placeholder="Product Type" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="code" placeholder="Product code" />
+                    </div>
+                    <div class="form-input">
+                        <input type="number" name="price" placeholder="Price" />
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">UPDATE</button>
+                    </div>  
+                </form>
+                
+            </div>
+        </div>
+    </section> -->
+    <!-- <section>
+        <div class="product-detail-container">
+            <div class="image-container">
+                <div class="main-image">
+                    <img src="../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg"/>
+                </div>
+                <div class="sub-image">
+                    <img src="../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg"/>
+                    <img src="../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg"/>
+                    <img src="../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg"/>
+                    <img src="../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg"/>
+                </div>
+            </div>
+            <div class="details">
+                <div class=" details-header">
+                    <div class="title">
+                        <h2>
+                            Product Name
+                        </h2>
+                    </div>
+                    <div class="price" >
+                        <label>Price: </label><span>$100</span>
+                    </div>
+                </div>
+                <div class="detail-description">
+                    <div class="description">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                    <div class="type" >
+                        <label>Type: </label><span>Product Type </span>
+                    </div>
+                    <div class="code" >
+                        <label>Code: </label><span>Product code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
 </div>
