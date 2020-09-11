@@ -21,10 +21,8 @@
                     <div class="form-input">
                         <input type="number" name="price"  formControlName="productPrice" placeholder="Price" />
                     </div>
-                    <div class="button-container">
-                        <button *ngIf="!isEditProduct" type="submit" (click)="addProduct()">ADD</button>
-                        <button *ngIf="isEditProduct" type="submit" (click)="addProduct()">UPDATE</button>
-                    </div>  
+                    <custom-button *ngIf="!isEditProduct" buttonName="ADD" (click)="addProduct()" className="custom-button"></custom-button>
+                    <custom-button *ngIf="isEditProduct" buttonName="UPDATE" (click)="addProduct()" className="custom-button"></custom-button>                        
                 </form>
                 
             </div>

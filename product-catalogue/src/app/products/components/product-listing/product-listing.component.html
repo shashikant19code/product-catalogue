@@ -13,7 +13,7 @@
                             <label>{{product.productName}}</label>
                         </div>
                         <div class="subtitle">
-                            <label>product details</label>
+                            <label>{{product.productDesc}}</label>
                             <div *ngIf="isShow" class="edit">
                                 <img (click)="editSelectedProduct($event,product)" src="" alt="edit">
                                 <img (click)="deleteSelectedProduct($event,product)" src="" alt="delete">
