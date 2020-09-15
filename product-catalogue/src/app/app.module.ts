@@ -12,8 +12,6 @@ import { ProductsListEffect } from './products/store/products.effects';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { InteriorPageComponent } from './core/components/interior-page/interior-page.component';
-import { HeaderComponent } from './core/header/header.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 import { CoreService } from './../app/core/service/core.service';
@@ -22,8 +20,6 @@ import { CoreService } from './../app/core/service/core.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    InteriorPageComponent,
-    HeaderComponent,
     SignUpComponent
   ],
   imports: [

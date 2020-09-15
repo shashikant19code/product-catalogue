@@ -1,0 +1,3007 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "CoreService",
+            "id": "injectable-CoreService-b07647fd68034c8934fc9748bc3ac196",
+            "file": "src/app/core/service/core.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "_catchError",
+                    "args": [
+                        {
+                            "name": "error",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 22,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "error",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_readResponse",
+                    "args": [
+                        {
+                            "name": "response",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 15,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "response",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "requestBody",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 56,
+                    "description": "<p>Login : Resister the user.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "requestBody",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerUser",
+                    "args": [
+                        {
+                            "name": "requestBody",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 45,
+                    "description": "<p>registerUser : Resister the user.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "requestBody",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { map, catchError } from 'rxjs/operators';\r\nimport { of } from 'rxjs';\r\n\r\nimport { environment } from 'src/environments/environment';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class CoreService {\r\n\r\n  constructor(private http: HttpClient) { }\r\n\r\n  private _readResponse(response) {\r\n    if (typeof response === 'object' && 'Result' in response) {\r\n      return response.Result;\r\n    }\r\n    return response;\r\n  }\r\n\r\n  private _catchError(error: any) {\r\n    if (\r\n      !error.status ||\r\n      error.status === 401 ||\r\n      error.status === 302 ||\r\n      error.status === 10 ||\r\n      error.status === 403 ||\r\n      error.status === 400\r\n    ) {\r\n    }\r\n    const message: string = error.message\r\n      ? error.message\r\n      : error.status\r\n        ? `${error.status} - ${error.statusText}`\r\n        : 'Server error';\r\n    return of({\r\n      errorResponse: error\r\n    });\r\n  }\r\n\r\n  /**\r\n   * registerUser : Resister the user.\r\n   */\r\n  public registerUser(requestBody) {\r\n    const URL = environment.baseUrl + 'register';\r\n    return this.http.post(URL, requestBody).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n\r\n    /**\r\n   * Login : Resister the user.\r\n   */\r\n  public login(requestBody) {\r\n    const URL = environment.baseUrl + 'login';\r\n    return this.http.post(URL, requestBody).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient"
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "ProductService",
+            "id": "injectable-ProductService-2646d8a9f3840b14322bd844594dcaa1",
+            "file": "src/app/products/service/product.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "_catchError",
+                    "args": [
+                        {
+                            "name": "error",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 21,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "error",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "_readResponse",
+                    "args": [
+                        {
+                            "name": "response",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 14,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "response",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "addProductToList",
+                    "args": [
+                        {
+                            "name": "requestBody",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 80,
+                    "description": "<p>addProductToList: To add the product in the &#39;products&#39; collection.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "requestBody",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteProductById",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 69,
+                    "description": "<p>deleteProductById: Delete product by id from &#39;products&#39; collection.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getAllProducts",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 47,
+                    "description": "<p>getAllProducts : To get all the products from the &#39;products&#39; collection.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "getProductById",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "description": "<p>getProductById : Get product by id.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateProductToList",
+                    "args": [
+                        {
+                            "name": "requestBody",
+                            "type": ""
+                        },
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 91,
+                    "description": "<p>updateProductToList: Update the product with id .</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "requestBody",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { of, Observable } from 'rxjs';\r\nimport { environment } from 'src/environments/environment';\r\nimport { map, catchError } from 'rxjs/operators';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ProductService {\r\n\r\n  constructor(private _http: HttpClient) { }\r\n\r\n  private _readResponse(response) {\r\n    if (typeof response === 'object' && 'Result' in response) {\r\n      return response.Result;\r\n    }\r\n    return response;\r\n  }\r\n\r\n  private _catchError(error: any) {\r\n    if (\r\n      !error.status ||\r\n      error.status === 401 ||\r\n      error.status === 302 ||\r\n      error.status === 10 ||\r\n      error.status === 403 ||\r\n      error.status === 400\r\n    ) {\r\n    }\r\n    const message: string = error.message\r\n      ? error.message\r\n      : error.status\r\n        ? `${error.status} - ${error.statusText}`\r\n        : 'Server error';\r\n    if (error) {\r\n      throw message;\r\n    }\r\n    return of({\r\n      errorResponse: error\r\n    });\r\n  }\r\n\r\n  /**\r\n   * getAllProducts : To get all the products from the 'products' collection.\r\n   */\r\n  public getAllProducts() {\r\n    const URL = environment.baseUrl + environment.productApi;\r\n    return this._http.get(URL).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n\r\n  /**\r\n   * getProductById : Get product by id.\r\n   */\r\n  public getProductById(id) {\r\n    const URL = environment.baseUrl + environment.productApi + '/' + id;\r\n    return this._http.get(URL).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n\r\n  /**\r\n   * deleteProductById: Delete product by id from 'products' collection.\r\n   */\r\n  public deleteProductById(id) {\r\n    const URL = environment.baseUrl + environment.productApi + '/' + id;\r\n    return this._http.delete(URL, id).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n\r\n  /**\r\n   * addProductToList: To add the product in the 'products' collection.\r\n   */\r\n  public addProductToList(requestBody) {\r\n    const URL = environment.baseUrl + environment.productApi;\r\n    return this._http.post(URL, requestBody).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n\r\n  /**\r\n   * updateProductToList: Update the product with id .\r\n   */\r\n  public updateProductToList(requestBody, id) {\r\n    const URL = environment.baseUrl + environment.productApi + '/' + id;\r\n    return this._http.put(URL, requestBody).pipe(\r\n      map(this._readResponse),\r\n      catchError(this._catchError)\r\n    );\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "_http",
+                        "type": "HttpClient"
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "_http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "ProductsListEffect",
+            "id": "injectable-ProductsListEffect-3622714981fba72e2107915ce1ee4570",
+            "file": "src/app/products/store/products.effects.ts",
+            "properties": [
+                {
+                    "name": "productsList$",
+                    "defaultValue": "this.actions$.pipe(\r\n        ofType(ProductsActionType.GET_PRODUCTS_LIST),\r\n        switchMap((action: GetProductsList) => this.productService.getAllProducts()),\r\n        map(res => {\r\n            return new GetProductsListSuccess(res);\r\n        })\r\n    )",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "Effect",
+                            "stringifiedArguments": ""
+                        }
+                    ],
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { Actions, Effect, ofType } from '@ngrx/effects';\r\nimport { switchMap, map } from 'rxjs/operators';\r\nimport { GetProductsList, GetProductsListSuccess, ProductsActionType } from './products.action';\r\nimport { ProductService } from './../service/product.service';\r\n\r\n\r\n@Injectable()\r\nexport class ProductsListEffect {\r\n    constructor(private actions$: Actions, private productService: ProductService) { }\r\n\r\n    @Effect()\r\n    public productsList$ = this.actions$.pipe(\r\n        ofType(ProductsActionType.GET_PRODUCTS_LIST),\r\n        switchMap((action: GetProductsList) => this.productService.getAllProducts()),\r\n        map(res => {\r\n            return new GetProductsListSuccess(res);\r\n        })\r\n    );\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions"
+                    },
+                    {
+                        "name": "productService",
+                        "type": "ProductService"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "productService",
+                        "type": "ProductService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-b0dda38f970a6690b77b35dfb293b3ac",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\r\n\r\nexport class AppPage {\r\n  navigateTo(): Promise<unknown> {\r\n    return browser.get(browser.baseUrl) as Promise<unknown>;\r\n  }\r\n\r\n  getTitleText(): Promise<string> {\r\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\r\n  }\r\n}\r\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "AppState",
+            "id": "class-AppState-b46064a871c55c267bce66cc95d32c39",
+            "file": "src/app/app.model.ts",
+            "type": "class",
+            "sourceCode": "import { ProductsState } from './products/store/products.model';\r\n\r\nexport class AppState {\r\n    ProductsState: ProductsState;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "ProductsState",
+                    "type": "ProductsState",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "CustomButton",
+            "id": "class-CustomButton-0f927b6d52467b5dbdc9ced9d5936a9f",
+            "file": "src/app/shared/button.element.ts",
+            "type": "class",
+            "sourceCode": "import { LitElement, html, css } from 'lit-element';\r\n\r\nexport class CustomButton extends LitElement {\r\n    buttonName : string;\r\n    className: string;\r\n    static get properties() {\r\n        return {\r\n            buttonName: { type: String },\r\n            className: { type: String }\r\n        };\r\n    }\r\n      static get styles() {\r\n        return css`\r\n            button {\r\n                float: center;\r\n                margin: 8px 0;\r\n                border: none;\r\n                cursor: pointer;\r\n                border: 1px solid transparent;                \r\n                font-size: 1rem;\r\n                line-height: 1.5;\r\n            }\r\n            .custom-button {\r\n                background-color: #ff724c;\r\n                color: white;\r\n                border-color: #ff724c;\r\n                width: 300px;\r\n                height: 30px;\r\n                border-radius: 20px;\r\n            }\r\n        `;\r\n      }\r\n      constructor() {\r\n        super();\r\n        this.buttonName = 'button';\r\n      }\r\n      render() {\r\n        return html`\r\n            <button class=\"${this.className}\">${this.buttonName}</button>\r\n        `;\r\n      }\r\n}",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 32
+            },
+            "properties": [
+                {
+                    "name": "buttonName",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "className",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                }
+            ],
+            "methods": [
+                {
+                    "name": "render",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 37
+                }
+            ],
+            "indexSignatures": [],
+            "extends": "LitElement",
+            "accessors": {
+                "properties": {
+                    "name": "properties",
+                    "getSignature": {
+                        "name": "properties",
+                        "type": "",
+                        "returnType": "",
+                        "line": 6
+                    }
+                },
+                "styles": {
+                    "name": "styles",
+                    "getSignature": {
+                        "name": "styles",
+                        "type": "",
+                        "returnType": "",
+                        "line": 12
+                    }
+                }
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "GetProductsList",
+            "id": "class-GetProductsList-0ac52191af4f0cf7cd9f321fe22d5236",
+            "file": "src/app/products/store/products.action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport enum ProductsActionType {\r\n    GET_PRODUCTS_LIST = 'GET_PRODUCTS_LIST',\r\n    GET_PRODUCTS_LIST_SUCCESS = 'GET_PRODUCTS_LIST_SUCCESS'\r\n}\r\n\r\nexport class GetProductsList implements Action {\r\n    readonly type = ProductsActionType.GET_PRODUCTS_LIST;\r\n    constructor(\r\n        public payload: any\r\n    ) { }\r\n}\r\n\r\nexport class GetProductsListSuccess implements Action {\r\n    readonly type = ProductsActionType.GET_PRODUCTS_LIST_SUCCESS;\r\n    constructor(\r\n        public payload: any\r\n    ) { }\r\n}\r\n\r\nexport type ProductsActionAction =\r\n    | GetProductsList\r\n    | GetProductsListSuccess;\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "payload",
+                        "type": "any"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "payload",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "payload",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "ProductsActionType.GET_PRODUCTS_LIST",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "GetProductsListSuccess",
+            "id": "class-GetProductsListSuccess-0ac52191af4f0cf7cd9f321fe22d5236",
+            "file": "src/app/products/store/products.action.ts",
+            "type": "class",
+            "sourceCode": "import { Action } from '@ngrx/store';\r\n\r\nexport enum ProductsActionType {\r\n    GET_PRODUCTS_LIST = 'GET_PRODUCTS_LIST',\r\n    GET_PRODUCTS_LIST_SUCCESS = 'GET_PRODUCTS_LIST_SUCCESS'\r\n}\r\n\r\nexport class GetProductsList implements Action {\r\n    readonly type = ProductsActionType.GET_PRODUCTS_LIST;\r\n    constructor(\r\n        public payload: any\r\n    ) { }\r\n}\r\n\r\nexport class GetProductsListSuccess implements Action {\r\n    readonly type = ProductsActionType.GET_PRODUCTS_LIST_SUCCESS;\r\n    constructor(\r\n        public payload: any\r\n    ) { }\r\n}\r\n\r\nexport type ProductsActionAction =\r\n    | GetProductsList\r\n    | GetProductsListSuccess;\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "payload",
+                        "type": "any"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "payload",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "properties": [
+                {
+                    "name": "payload",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "ProductsActionType.GET_PRODUCTS_LIST_SUCCESS",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        132
+                    ]
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "Action"
+            ]
+        },
+        {
+            "name": "ProductsState",
+            "id": "class-ProductsState-f0ba289eb90d65753e9ca2de0d361e7e",
+            "file": "src/app/products/store/products.model.ts",
+            "type": "class",
+            "sourceCode": "export class ProductsState {\r\n  productsList: any;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "productsList",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AddProductComponent",
+            "id": "component-AddProductComponent-b73c8221a3971584ec76a854ec471843",
+            "file": "src/app/products/components/add-product/add-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-add-product",
+            "styleUrls": [
+                "./add-product.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./add-product.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "allProducts",
+                    "defaultValue": "[]",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "getproductsList$",
+                    "defaultValue": "this.store.select(getProductListInOrder)",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "isEditProduct",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "productForm",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "productInfo",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "productSub",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "store",
+                    "type": "Store<AppState>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addProduct",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "description": "<p>addProduct:Add product to the productList in the collection or To update existing product.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "getProductInfo",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61,
+                    "description": "<p>getProductInfo: Get product information to be edited.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms';\r\nimport { ActivatedRoute, Router } from '@angular/router';\r\nimport { Subscription, Observable } from 'rxjs';\r\nimport { Store } from '@ngrx/store';\r\n\r\nimport { ProductService } from './../../service/product.service';\r\nimport { AppState } from './../../../app.model';\r\nimport { getProductListInOrder } from '../../store/products.selector';\r\nimport { GetProductsList } from '../../store/products.action';\r\n\r\n@Component({\r\n  selector: 'app-add-product',\r\n  templateUrl: './add-product.component.html',\r\n  styleUrls: ['./add-product.component.scss']\r\n})\r\nexport class AddProductComponent implements OnInit {\r\n  public productForm: FormGroup;\r\n  public productSub: Subscription;\r\n  public isEditProduct = false;\r\n  public productInfo: any;\r\n  public allProducts: any = [];\r\n\r\n  public getproductsList$: Observable<any> = this.store.select(getProductListInOrder);\r\n\r\n  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,\r\n              private router: Router, public store: Store<AppState>) { }\r\n\r\n  ngOnInit(): void {\r\n    this.productForm = new FormGroup({\r\n      productName: new FormControl('', Validators.required),\r\n      productDesc: new FormControl('', Validators.required),\r\n      productType: new FormControl('', Validators.required),\r\n      productCode: new FormControl(Validators.required),\r\n      productPrice: new FormControl(0, Validators.required),\r\n    });\r\n    this.activatedRoute.params.subscribe(params => {\r\n      if (params && params.id) {\r\n        this.isEditProduct = true;\r\n        this.getproductsList$.subscribe(data => {\r\n          if (data) {\r\n            this.allProducts = data;\r\n            const productInfo = this.allProducts.find(product => {\r\n              return product.id == params.id;\r\n            });\r\n            if (productInfo) {\r\n              this.productInfo = productInfo;\r\n              this.productForm.patchValue(productInfo);\r\n            }\r\n          } else {\r\n            this.getProductInfo(params.id);\r\n          }\r\n        });\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * getProductInfo: Get product information to be edited.\r\n   */\r\n  public getProductInfo(id): void {\r\n    let productInfo;\r\n    this.productSub = this.productService.getProductById(id).subscribe(product => {\r\n      productInfo = Object.assign({}, product);\r\n      this.productInfo = productInfo;\r\n      if (productInfo) {\r\n        this.productForm.patchValue(productInfo);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * addProduct:Add product to the productList in the collection or To update existing product.\r\n   */\r\n  public addProduct(): void {\r\n    const requestBody = Object.assign({}, this.productForm.value);\r\n    if (!this.isEditProduct) {\r\n      this.productService.addProductToList(requestBody).subscribe(data => {\r\n        if (data) {\r\n          this.store.dispatch(new GetProductsList({}));\r\n          this.router.navigate(['']);\r\n          console.log('Product added Successfully');\r\n        }\r\n      });\r\n    } else {\r\n      this.productService.updateProductToList(requestBody, this.productInfo.id).subscribe(data => {\r\n        if (data) {\r\n          this.store.dispatch(new GetProductsList({}));\r\n          this.router.navigate(['']);\r\n          console.log('Product updated Successfully');\r\n        }\r\n      });\r\n    }\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// common form css\r\n.form-container{\r\n    width: 100%;\r\n    height: 100%;\r\n    height: 88vh;\r\n    .form{\r\n        display: flex;\r\n        flex-direction: column;\r\n        justify-content: center;\r\n        align-items: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        form{\r\n            background-color: #fff;\r\n            width: 25%;\r\n            min-height: 25rem;\r\n            padding : 2rem;\r\n            box-shadow: 1px 2px 3px rgba(0,0,0,0.2);\r\n            border-radius: 0.3rem;\r\n            display: flex;\r\n            flex-direction: column;\r\n            justify-content: center;\r\n            align-items: center;\r\n            .title{\r\n                margin-bottom: 2rem;\r\n                h2{\r\n                    color : #ff724c;\r\n                    font-size: 1.4rem;\r\n                }\r\n            }\r\n            .form-input{\r\n                width: 100%;\r\n                margin-bottom: 1.5rem;\r\n                text-align: center;\r\n                \r\n                input{\r\n                    width: 80%;\r\n                    height: 2rem;\r\n                    border-radius: 3rem;\r\n                    outline: unset;\r\n                    border : unset;\r\n                    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.2);\r\n                    padding : 0rem 1rem\r\n                }\r\n                \r\n            }\r\n            .button-container{\r\n                background-color: #ff724c;\r\n                text-align: center;\r\n                width: 80%;\r\n                height: 2rem;\r\n                line-height: 2rem;\r\n                border-radius: 3rem;\r\n                margin: 1rem 0;\r\n                button{\r\n                    color: #fff;\r\n                    font-weight: bold;\r\n                    outline: unset;\r\n                    background-color: unset;\r\n                    border: unset;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./add-product.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "productService",
+                        "type": "ProductService"
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute"
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>"
+                    }
+                ],
+                "line": 24,
+                "jsdoctags": [
+                    {
+                        "name": "productService",
+                        "type": "ProductService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section>\r\n        <div class=\"form-container\">\r\n            <div class=\"form add-product-form\" >\r\n                <form [formGroup]=\"productForm\">\r\n                    <div class=\"title\">\r\n                        <h2 *ngIf=\"!isEditProduct\">ADD PRODUCT</h2>\r\n                        <h2 *ngIf=\"isEditProduct\">UPDATE PRODUCT</h2>\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"productName\" formControlName=\"productName\" placeholder=\"Product Name\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"textarea\" name=\"description\"  formControlName=\"productDesc\" placeholder=\"Description\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"type\"   formControlName=\"productType\" placeholder=\"Product Type\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"code\"   formControlName=\"productCode\" placeholder=\"Product code\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"price\"  formControlName=\"productPrice\" placeholder=\"Price\" />\r\n                    </div>\r\n                    <custom-button *ngIf=\"!isEditProduct\" buttonName=\"ADD\" (click)=\"addProduct()\" className=\"custom-button\"></custom-button>\r\n                    <custom-button *ngIf=\"isEditProduct\" buttonName=\"UPDATE\" (click)=\"addProduct()\" className=\"custom-button\"></custom-button>                        \r\n                </form>\r\n                \r\n            </div>\r\n        </div>\r\n    </section>"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-fed43913323f1eb56729614ecad4e6b0",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'product-catalogue'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'product-catalogue';\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<router-outlet></router-outlet>"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 53,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-619917de6905a3a181e1095fc6393723-1",
+            "file": "src/app/core/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isShow",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "logout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "description": "<p>logout: Logout the user.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "description": "<p>navigateTo: Go to the particular Route.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  templateUrl: './header.component.html',\r\n  styleUrls: ['./header.component.scss']\r\n})\r\nexport class HeaderComponent implements OnInit {\r\n  public isShow = false;\r\n\r\n  constructor(private router: Router) { }\r\n\r\n  ngOnInit(): void {\r\n    const token = localStorage.getItem('accessToken');\r\n    if (token) {\r\n        this.isShow = true;\r\n    }\r\n  }\r\n\r\n  /**\r\n  * navigateTo: Go to the particular Route.\r\n  */\r\n  public navigateTo(tab): void {\r\n    this.router.navigate([tab]);\r\n  }\r\n\r\n  /**\r\n   * logout: Logout the user.\r\n   */\r\n  public logout() {\r\n    localStorage.removeItem('accessToken');\r\n    this.router.navigate(['login']);\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../assets/scss/BreakPoint.scss\";\r\n@import \"../../../assets/scss/Variable.scss\";\r\n\r\n* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n\r\n.theme-container.dark{\r\n    @include theme-colors($light-theme: false)\r\n}\r\n.theme-container.light{\r\n    @include theme-colors($light-theme: true);\r\n}\r\n\r\n\r\n//header css\r\n.nav-container{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 2rem 2rem;\r\n    background-color: #fff;\r\n    width: 100%;\r\n    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);\r\n    .image-container{\r\n       \r\n    }\r\n    .nav-list{\r\n        width: 15%;\r\n        .list{\r\n            display: flex;\r\n            justify-content: space-between;\r\n            list-style-type: none;\r\n            margin: 0;\r\n            padding: 0;\r\n            a{\r\n                text-decoration: unset;\r\n                color : #000;\r\n            }\r\n            .profile{\r\n                position: relative;\r\n                .popup.on{\r\n                    position: absolute;\r\n                    right: 0;\r\n                    height: auto;\r\n                    width: auto;\r\n                    -webkit-filter : drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\r\n                      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\r\n                    .popup-container{\r\n                        background-color: #fff;\r\n                        width: 100%;\r\n                        height: 100%;\r\n                        display: flex;\r\n                        justify-content: center;\r\n                        flex-direction: column;\r\n                        align-items: center;\r\n                        clip-path:   polygon(69% 0, 81% 6%, 100% 6%, 100% 100%, 0 100%, 0 6%, 54% 6%);\r\n                        -webkit-clip-path:  polygon(69% 0, 81% 6%, 100% 6%, 100% 100%, 0 100%, 0 6%, 54% 6%);\r\n                        .option{    \r\n                            padding: 1rem 3rem;\r\n                            &:hover{\r\n                                color: #686919;\r\n                            }\r\n                        }\r\n                        .login{\r\n                            margin-top: 2rem;\r\n                        }\r\n                        .profile{\r\n                            margin-bottom: 1rem;\r\n                        }\r\n                    }\r\n                    \r\n                }\r\n                .popup.off{\r\n                    display: none;\r\n                }\r\n            }\r\n        }\r\n    } \r\n}\r\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "HeaderComponent-1",
+            "templateData": "<header>\r\n    <nav class=\"nav-container\">\r\n        <div (click)=\"navigateTo('home')\" class=\"image-container\">\r\n            <img src=\"\" alt=\"logo\">\r\n        </div>\r\n        <div class=\"nav-list\">\r\n            <ul class=\"list\">\r\n                <li *ngIf=\"isShow\" (click)=\"navigateTo('add-product')\"><a>Add Product</a></li>\r\n                <li class=\"profile\">\r\n                    <a (click)=\"logout()\">Account</a>\r\n                    <div class=\"popup off\">\r\n                        <div class=\"popup-container\">\r\n                            <div class=\"option login\">Login</div>\r\n                            <div class=\"option logout\">Logout</div>\r\n                            <div class=\"option profile\">profile</div>\r\n                        </div>\r\n\r\n                    </div>\r\n                </li>\r\n\r\n            </ul>\r\n        </div>\r\n    </nav>\r\n</header>"
+        },
+        {
+            "name": "InteriorPageComponent",
+            "id": "component-InteriorPageComponent-e1ccdab727ef25a92bed48117cf7937f",
+            "file": "src/app/core/components/interior-page/interior-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-interior-page",
+            "styleUrls": [
+                "./interior-page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./interior-page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-interior-page',\r\n  templateUrl: './interior-page.component.html',\r\n  styleUrls: ['./interior-page.component.scss']\r\n})\r\nexport class InteriorPageComponent implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../assets/scss/BreakPoint.scss\";\r\n@import \"../../../../assets/scss/Variable.scss\";\r\n\r\n* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n\r\n.theme-container.dark{\r\n    @include theme-colors($light-theme: false)\r\n}\r\n.theme-container.light{\r\n    @include theme-colors($light-theme: true);\r\n}\r\n\r\n.main-container{\r\n    height: 100vh;\r\n    // background-color: ;\r\n}",
+                    "styleUrl": "./interior-page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"theme-container light\">\r\n    <app-header>\r\n    </app-header>\r\n    <div class=\"main-container\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
+        },
+        {
+            "name": "LoginComponent",
+            "id": "component-LoginComponent-e7e4612a0f121f6c97cd45e9dbc343c4",
+            "file": "src/app/login/login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "error",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "loginForm",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "router",
+                    "type": "Router",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "login",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "description": "<p>Login: Login with user.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                },
+                {
+                    "name": "signUp",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "description": "<p>signUp: Navigate to signup page.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms';\r\nimport { CoreService } from '../core/service/core.service';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-login',\r\n  templateUrl: './login.component.html',\r\n  styleUrls: ['./login.component.scss']\r\n})\r\nexport class LoginComponent implements OnInit {\r\n  public loginForm: FormGroup;\r\n  public error = '';\r\n\r\n  constructor(private coreService: CoreService, public router: Router) { }\r\n\r\n  ngOnInit(): void {\r\n    this.loginForm = new FormGroup({\r\n      email: new FormControl('', Validators.required),\r\n      password: new FormControl('', Validators.required),\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Login: Login with user.\r\n   */\r\n  public login(): void {\r\n    const requestBody = Object.assign({}, this.loginForm.value);\r\n    this.coreService.login(requestBody).subscribe(data => {\r\n      if (data && data.accessToken) {\r\n        localStorage.setItem('accessToken', data.accessToken);\r\n        this.router.navigate(['home']);\r\n      } else {\r\n          this.error = data && data.errorResponse && data.errorResponse.error ? data.errorResponse.error : '';\r\n          setTimeout(() => {\r\n            this.error = '';\r\n          }, 3000);\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * signUp: Navigate to signup page.\r\n   */\r\n  public signUp() {\r\n    this.router.navigate(['sign-up']);\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// .modal {\r\n//     position: fixed;\r\n//     left: 0;\r\n//     top: 0;\r\n//     width: 100%;\r\n//     height: 100%;\r\n//     background-color: rgba(0, 0, 0, 0.5);\r\n//     opacity: 1;\r\n// }\r\n\r\n// .login-box {\r\n//     width: 280px;\r\n//     position: absolute;\r\n//     top: 50%;\r\n//     left: 50%;\r\n//     transform: translate(-50%, -50%);\r\n//     color: black;\r\n//     background-color: white;\r\n//     padding: 2rem;\r\n// }\r\n\r\n// .login-box h1 {\r\n//     float: left;\r\n//     font-size: 40px;\r\n//     border-bottom: 6px solid green;\r\n//     margin-bottom: 50px;\r\n//     padding: 13px 0;\r\n// }\r\n\r\n// .text-field {\r\n//     width: 100%;\r\n//     overflow: hidden;\r\n//     font-size: 20px;\r\n//     padding: 8px 0;\r\n//     margin: 8px 0;\r\n//     border-bottom: 1px solid green;\r\n// }\r\n\r\n// .text-field input {\r\n//     border: none;\r\n//     outline: none;\r\n//     background: none;\r\n//     color: black;\r\n//     font-size: 18px;\r\n//     width: 80%;\r\n//     float: left;\r\n//     margin: 0 10px;\r\n// }\r\n\r\n// .signin-btn {\r\n//     width: 100%;\r\n//     background: none;\r\n//     border: 2px solid green;\r\n//     color: black;\r\n//     padding: 5px;\r\n//     font-size: 18px;\r\n//     cursor: pointer;\r\n//     margin: 12px 0;\r\n// }\r\n\r\n\r\n.form-container{\r\n    width: 100%;\r\n    height: 100%;\r\n    height: 88vh;\r\n    .form{\r\n        display: flex;\r\n        flex-direction: column;\r\n        justify-content: center;\r\n        align-items: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        form{\r\n            background-color: #fff;\r\n            width: 25%;\r\n            min-height: 25rem;\r\n            padding : 2rem;\r\n            box-shadow: 1px 2px 3px rgba(0,0,0,0.2);\r\n            border-radius: 0.3rem;\r\n            display: flex;\r\n            flex-direction: column;\r\n            justify-content: center;\r\n            align-items: center;\r\n            .title{\r\n                margin-bottom: 2rem;\r\n                h2{\r\n                    color : #ff724c;\r\n                    font-size: 1.4rem;\r\n                }\r\n            }\r\n            .form-input{\r\n                width: 100%;\r\n                margin-bottom: 1.5rem;\r\n                text-align: center;\r\n                \r\n                input{\r\n                    width: 80%;\r\n                    height: 2rem;\r\n                    border-radius: 3rem;\r\n                    outline: unset;\r\n                    border : unset;\r\n                    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.2);\r\n                    padding : 0rem 1rem\r\n                }\r\n                \r\n            }\r\n            .button-container{\r\n                background-color: #ff724c;\r\n                text-align: center;\r\n                width: 80%;\r\n                height: 2rem;\r\n                line-height: 2rem;\r\n                border-radius: 3rem;\r\n                margin: 1rem 0;\r\n                button{\r\n                    color: #fff;\r\n                    font-weight: bold;\r\n                    outline: unset;\r\n                    background-color: unset;\r\n                    border: unset;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "coreService",
+                        "type": "CoreService"
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "coreService",
+                        "type": "CoreService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section>\r\n        <div class=\"form-container\">\r\n            <div class=\"form login-form\" >\r\n                <form [formGroup]=\"loginForm\">\r\n                    <div class=\"title\">\r\n                        <h2>LOGIN</h2>\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"email\"  formControlName=\"email\" placeholder=\"Email\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"password\" name=\"password\" formControlName=\"password\" placeholder=\"Password\" />\r\n                    </div>\r\n                    <span *ngIf=\"error\" [ngStyle]=\"{'color': 'red'}\">{{error}}</span>\r\n                    <custom-button (click)=\"login()\" buttonName=\"Sign In\" className=\"custom-button\"></custom-button>                    \r\n                    <custom-button buttonName=\"Sign Up\" (click)=\"signUp()\" className=\"custom-button\"></custom-button>\r\n                </form>                \r\n            </div>\r\n        </div>\r\n    </section>"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 66,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "ProductDetailComponent",
+            "id": "component-ProductDetailComponent-8abf2341b9efb43dc9f6c1767918ef5b",
+            "file": "src/app/products/components/product-detail/product-detail.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-product-detail",
+            "styleUrls": [
+                "./product-detail.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./product-detail.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "allProducts",
+                    "defaultValue": "[]",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "getproductsList$",
+                    "defaultValue": "this.store.select(getProductListInOrder)",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "product",
+                    "defaultValue": "{}",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "productSub",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "store",
+                    "type": "Store<AppState>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { ActivatedRoute } from '@angular/router';\r\nimport { Subscription, Observable } from 'rxjs';\r\nimport { Store } from '@ngrx/store';\r\n\r\nimport { AppState } from './../../../app.model';\r\nimport { ProductService } from '../../service/product.service';\r\nimport { getProductListInOrder } from '../../store/products.selector';\r\n\r\n@Component({\r\n  selector: 'app-product-detail',\r\n  templateUrl: './product-detail.component.html',\r\n  styleUrls: ['./product-detail.component.scss']\r\n})\r\nexport class ProductDetailComponent implements OnInit {\r\n  public product: any = {};\r\n  public productSub: Subscription;\r\n  public allProducts: any = [];\r\n\r\n  public getproductsList$: Observable<any> = this.store.select(getProductListInOrder);\r\n\r\n  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, public store: Store<AppState>) { }\r\n\r\n  ngOnInit(): void {\r\n    let id;\r\n    const paramIdSub = this.activatedRoute.params.subscribe(params => {\r\n      id = params['id'];\r\n    });\r\n    paramIdSub.unsubscribe();\r\n    this.getproductsList$.subscribe(data => {\r\n      if (data) {\r\n        this.allProducts = data;\r\n        const productInfo = this.allProducts.find(product => {\r\n          return product.id == id;\r\n        });\r\n        if (productInfo) {\r\n          this.product = productInfo;\r\n        }\r\n      } else {\r\n        this.productSub = this.productService.getProductById(id).subscribe(product => {\r\n          this.product = product;\r\n        });\r\n      }\r\n    });\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n.product-detail-container{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr ;\r\n    grid-column-gap: 3em;\r\n    min-height: 87vh;\r\n    padding: 3rem;\r\n    // background-color: #fff;\r\n    // margin-top: 0.5rem;\r\n    .image-container{\r\n        padding : 2rem;\r\n        .main-image{\r\n            width: 100%;\r\n            height: 24rem;\r\n            margin-bottom: 2rem;\r\n            img{\r\n                width: 100%;\r\n                height: 100%;\r\n            }\r\n        }\r\n        .sub-image{\r\n            display: grid;\r\n            grid-template-columns: auto auto auto auto;\r\n            grid-column-gap: 1em;\r\n            width: 100%;\r\n            img{\r\n                width: 10rem;\r\n                height: 10rem;\r\n            }\r\n        }\r\n    }\r\n    .details{\r\n        padding : 2rem;\r\n        .details-header{\r\n            display: flex;\r\n            justify-content: space-between;\r\n            align-items: center;\r\n            margin-bottom: 3rem;\r\n            .price{\r\n                label{\r\n                    font-weight: bold;\r\n                }\r\n                span{\r\n                    font-weight: bold;\r\n                }\r\n            }\r\n        }\r\n        .detail-description{\r\n            .description{\r\n                margin-bottom: 1.5rem;\r\n            }\r\n            .type,.code{\r\n                margin-bottom: 1.5rem;\r\n                label{\r\n                    font-weight: bold;\r\n                }\r\n            }\r\n        }\r\n    }   \r\n}\r\n",
+                    "styleUrl": "./product-detail.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "productService",
+                        "type": "ProductService"
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>"
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "productService",
+                        "type": "ProductService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section>\r\n        <div class=\"product-detail-container\">\r\n            <div class=\"image-container\">\r\n                <div class=\"main-image\">\r\n                    <img [src]=\"product.image ? product.image : '../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg'\"/>\r\n                </div>\r\n                <div class=\"sub-image\">\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"details\">\r\n                <div class=\" details-header\">\r\n                    <div class=\"title\">\r\n                        <h2>\r\n                            {{product.productName}}\r\n                        </h2>\r\n                    </div>\r\n                    <div class=\"price\" >\r\n                        <label>Price: </label><span>{{product.productPrice}}</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"detail-description\">\r\n                    <div class=\"description\">\r\n                        {{product.productDesc}}\r\n                        <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. -->\r\n                    </div>\r\n                    <div class=\"type\" >\r\n                        <label>Type: </label><span>{{product.productType}} </span>\r\n                    </div>\r\n                    <div class=\"code\" >\r\n                        <label>Code: </label><span>{{product.productCode}}</span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section>"
+        },
+        {
+            "name": "ProductListingComponent",
+            "id": "component-ProductListingComponent-a2b46f07b7cc4fc852a55a985cde2974",
+            "file": "src/app/products/components/product-listing/product-listing.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-product-listing",
+            "styleUrls": [
+                "./product-listing.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./product-listing.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "allProducts",
+                    "defaultValue": "[]",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "allProductsSub",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "deleteProductSub",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "getproductsList$",
+                    "defaultValue": "this.store.select(getProductListInOrder)",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "isShow",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "router",
+                    "type": "Router",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "store",
+                    "type": "Store<AppState>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "deleteSelectedProduct",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": ""
+                        },
+                        {
+                            "name": "product",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "description": "<p>deleteSelectedProduct: TO delete the product.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "product",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "editSelectedProduct",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": ""
+                        },
+                        {
+                            "name": "product",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 70,
+                    "description": "<p>editSelectedProduct: Edit the selected product</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "product",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "gotoProduct",
+                    "args": [
+                        {
+                            "name": "product",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "description": "<p>gotoProduct: View Details of the selected product.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "product",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "description": "<p>navigateTo: Go to the particular Route.</p>\n",
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "description": "<p>ngOnDestroy: Each subscription should be unsubscribe here otherewise Data leakage might happened.</p>\n"
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, OnDestroy } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { Subscription, Observable } from 'rxjs';\r\nimport { Store } from '@ngrx/store';\r\n\r\nimport { AppState } from './../../../app.model';\r\nimport { ProductService } from './../../service/product.service';\r\nimport { GetProductsList } from '../../store/products.action';\r\nimport { getProductListInOrder } from './../../store/products.selector';\r\n\r\n@Component({\r\n  selector: 'app-product-listing',\r\n  templateUrl: './product-listing.component.html',\r\n  styleUrls: ['./product-listing.component.scss']\r\n})\r\nexport class ProductListingComponent implements OnInit, OnDestroy {\r\n  public allProducts: any = [];\r\n  public allProductsSub: Subscription;\r\n  public deleteProductSub: Subscription;\r\n  public isShow = false;\r\n\r\n  public getproductsList$: Observable<any> = this.store.select(getProductListInOrder);\r\n\r\n  constructor(public router: Router, private productService: ProductService, public store: Store<AppState>) { }\r\n\r\n  ngOnInit(): void {\r\n    const token = localStorage.getItem('accessToken');\r\n    if (token) {\r\n      this.isShow = true;\r\n    }\r\n    this.getproductsList$.subscribe(data => {\r\n      if (data) {\r\n        this.allProducts = data;\r\n      } else {\r\n        this.store.dispatch(new GetProductsList({}));\r\n      }\r\n    });\r\n  }\r\n\r\n  /**\r\n   * ngOnDestroy: Each subscription should be unsubscribe here otherewise Data leakage might happened.\r\n   */\r\n  ngOnDestroy(): void {\r\n    if (this.allProductsSub) {\r\n      this.allProductsSub.unsubscribe();\r\n    }\r\n    if (this.deleteProductSub) {\r\n      this.deleteProductSub.unsubscribe();\r\n    }\r\n  }\r\n\r\n  /**\r\n   * navigateTo: Go to the particular Route.\r\n   */\r\n  public navigateTo(tab): void {\r\n    this.router.navigate([tab]);\r\n  }\r\n\r\n  /**\r\n   * gotoProduct: View Details of the selected product.\r\n   */\r\n\r\n  public gotoProduct(product): void {\r\n    this.router.navigate(['view-details', product.id]);\r\n  }\r\n\r\n  /**\r\n   * editSelectedProduct: Edit the selected product\r\n   */\r\n  public editSelectedProduct(event, product): void {\r\n    event.stopPropagation();\r\n    this.router.navigate(['edit-product', product.id]);\r\n  }\r\n\r\n  /**\r\n   * deleteSelectedProduct: TO delete the product.\r\n   */\r\n  public deleteSelectedProduct(event, product): void {\r\n    event.stopPropagation();\r\n    this.deleteProductSub = this.productService.deleteProductById(product.id).subscribe(data => {\r\n      if (data) {\r\n        this.store.dispatch(new GetProductsList({}));\r\n      }\r\n    });\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../assets/scss/BreakPoint.scss\";\r\n@import \"../../../../assets/scss/Variable.scss\";\r\n\r\n* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n\r\n.theme-container.dark{\r\n    @include theme-colors($light-theme: false)\r\n}\r\n.theme-container.light{\r\n    @include theme-colors($light-theme: true);\r\n}\r\n\r\n\r\n//header css\r\n.nav-container{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 2rem 2rem;\r\n    background-color: #fff;\r\n    width: 100%;\r\n    box-shadow: 0px 1px 3px rgba(0,0,0,0.2);\r\n    .image-container{\r\n       \r\n    }\r\n    .nav-list{\r\n        width: 15%;\r\n        .list{\r\n            display: flex;\r\n            justify-content: space-between;\r\n            list-style-type: none;\r\n            margin: 0;\r\n            padding: 0;\r\n            a{\r\n                text-decoration: unset;\r\n                color : #000;\r\n            }\r\n            .profile{\r\n                position: relative;\r\n                .popup.on{\r\n                    position: absolute;\r\n                    right: 0;\r\n                    height: auto;\r\n                    width: auto;\r\n                    -webkit-filter : drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\r\n                      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\r\n                    .popup-container{\r\n                        background-color: #fff;\r\n                        width: 100%;\r\n                        height: 100%;\r\n                        display: flex;\r\n                        justify-content: center;\r\n                        flex-direction: column;\r\n                        align-items: center;\r\n                        clip-path:   polygon(69% 0, 81% 6%, 100% 6%, 100% 100%, 0 100%, 0 6%, 54% 6%);\r\n                        -webkit-clip-path:  polygon(69% 0, 81% 6%, 100% 6%, 100% 100%, 0 100%, 0 6%, 54% 6%);\r\n                        .option{    \r\n                            padding: 1rem 3rem;\r\n                            &:hover{\r\n                                color: #686919;\r\n                            }\r\n                        }\r\n                        .login{\r\n                            margin-top: 2rem;\r\n                        }\r\n                        .profile{\r\n                            margin-bottom: 1rem;\r\n                        }\r\n                    }\r\n                    \r\n                }\r\n                .popup.off{\r\n                    display: none;\r\n                }\r\n            }\r\n        }\r\n    } \r\n}\r\n\r\n//product listing \r\n\r\n.container{\r\n    width: 90%;\r\n    margin: 0rem auto;\r\n    padding : 3rem 0 3rem;\r\n    .grid-container{\r\n        display: grid;\r\n        grid-template-columns: 3;\r\n        .product-container{\r\n            height: 25rem;\r\n            box-shadow: 1px 2px 3px rgba(0,0,0,0.2);\r\n            background-color: #fff;\r\n            .image-container{\r\n                width: 100%;\r\n                height: 16rem;\r\n                img{\r\n                    width: 100%;\r\n                    height: 100%;\r\n                }\r\n            }\r\n            .details-container{\r\n                padding: 1rem;\r\n                .title{\r\n                    line-height: 1.8rem;\r\n                    font-size: 1.3rem;\r\n                    font-weight: bold;\r\n                }\r\n                .subtitle{\r\n                    display: flex;\r\n                    label{\r\n                        flex-grow: 5 ;\r\n                        color: #777;\r\n                        font-size:1rem ;\r\n                    }\r\n                    .edit{\r\n                        flex-grow: 1;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        @include bp-from(m){\r\n            grid-template-columns: auto auto ;\r\n            grid-gap: 2em;\r\n        }\r\n        @include bp-from(xl){\r\n            grid-template-columns: auto auto auto;\r\n            grid-gap: 2em;\r\n        }\r\n        \r\n    }\r\n    \r\n    @include bp-from(m){\r\n        width: 90%;\r\n    }\r\n    @include bp-from(l){\r\n        width: 80%;\r\n    }\r\n}\r\n\r\n// common form css\r\n.form-container{\r\n    width: 100%;\r\n    height: 100%;\r\n    height: 88vh;\r\n    .form{\r\n        display: flex;\r\n        flex-direction: column;\r\n        justify-content: center;\r\n        align-items: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        form{\r\n            background-color: #fff;\r\n            width: 25%;\r\n            min-height: 25rem;\r\n            padding : 2rem;\r\n            box-shadow: 1px 2px 3px rgba(0,0,0,0.2);\r\n            border-radius: 0.3rem;\r\n            display: flex;\r\n            flex-direction: column;\r\n            justify-content: center;\r\n            align-items: center;\r\n            .title{\r\n                margin-bottom: 2rem;\r\n                h2{\r\n                    color : #ff724c;\r\n                    font-size: 1.4rem;\r\n                }\r\n            }\r\n            .form-input{\r\n                width: 100%;\r\n                margin-bottom: 1.5rem;\r\n                text-align: center;\r\n                \r\n                input{\r\n                    width: 80%;\r\n                    height: 2rem;\r\n                    border-radius: 3rem;\r\n                    outline: unset;\r\n                    border : unset;\r\n                    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.2);\r\n                    padding : 0rem 1rem\r\n                }\r\n                \r\n            }\r\n            .button-container{\r\n                background-color: #ff724c;\r\n                text-align: center;\r\n                width: 80%;\r\n                height: 2rem;\r\n                line-height: 2rem;\r\n                border-radius: 3rem;\r\n                margin: 1rem 0;\r\n                button{\r\n                    color: #fff;\r\n                    font-weight: bold;\r\n                    outline: unset;\r\n                    background-color: unset;\r\n                    border: unset;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n// product detail page\r\n\r\n.product-detail-container{\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr ;\r\n    grid-column-gap: 3em;\r\n    min-height: 87vh;\r\n    padding: 3rem;\r\n    background-color: #fff;\r\n    margin-top: 0.5rem;\r\n    .image-container{\r\n        padding : 2rem;\r\n        .main-image{\r\n            width: 100%;\r\n            height: 24rem;\r\n            margin-bottom: 2rem;\r\n            img{\r\n                width: 100%;\r\n                height: 100%;\r\n            }\r\n        }\r\n        .sub-image{\r\n            display: grid;\r\n            grid-template-columns: auto auto auto auto;\r\n            grid-column-gap: 1em;\r\n            width: 100%;\r\n            img{\r\n                width: 10rem;\r\n                height: 10rem;\r\n            }\r\n        }\r\n    }\r\n    .details{\r\n        padding : 2rem;\r\n        .details-header{\r\n            display: flex;\r\n            justify-content: space-between;\r\n            align-items: center;\r\n            margin-bottom: 3rem;\r\n            .price{\r\n                label{\r\n                    font-weight: bold;\r\n                }\r\n                span{\r\n                    font-weight: bold;\r\n                }\r\n            }\r\n        }\r\n        .detail-description{\r\n            .description{\r\n                margin-bottom: 1.5rem;\r\n            }\r\n            .type,.code{\r\n                margin-bottom: 1.5rem;\r\n                label{\r\n                    font-weight: bold;\r\n                }\r\n            }\r\n        }\r\n    }   \r\n}\r\n",
+                    "styleUrl": "./product-listing.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    },
+                    {
+                        "name": "productService",
+                        "type": "ProductService"
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>"
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "productService",
+                        "type": "ProductService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "\r\n<div class=\"theme-container light\">\r\n    <section>\r\n        <div class=\"container\">\r\n            <div class=\"grid-container\">\r\n                <div class=\"product-container\" *ngFor=\"let product of allProducts\" (click)=\"gotoProduct(product)\">\r\n                    <div class=\"image-container\">\r\n                        <img [src]=\"product.image ? product.image : '../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg'\"\r\n                            alt=\"image\">\r\n                    </div>\r\n                    <div class=\"details-container\">\r\n                        <div class=\"title\">\r\n                            <label>{{product.productName}}</label>\r\n                        </div>\r\n                        <div class=\"subtitle\">\r\n                            <label>{{product.productDesc}}</label>\r\n                            <div *ngIf=\"isShow\" class=\"edit\">\r\n                                <img (click)=\"editSelectedProduct($event,product)\" src=\"\" alt=\"edit\">\r\n                                <img (click)=\"deleteSelectedProduct($event,product)\" src=\"\" alt=\"delete\">\r\n                            </div>\r\n                        </div>\r\n\r\n                    </div>\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n    </section>\r\n    <!-- <section>\r\n        <div class=\"form-container\">\r\n            <div class=\"form login-form\" >\r\n                <form>\r\n                    <div class=\"title\">\r\n                        <h2>LOGIN</h2>\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"email\" placeholder=\"Email\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"password\" name=\"password\" placeholder=\"Password\" />\r\n                    </div>\r\n                    <div class=\"button-container\">\r\n                        <button type=\"submit\">LOGIN</button>\r\n                    </div>  \r\n                </form>\r\n                \r\n            </div>\r\n        </div>\r\n    </section> -->\r\n    <!-- <section>\r\n        <div class=\"form-container\">\r\n            <div class=\"form add-product-form\" >\r\n                <form>\r\n                    <div class=\"title\">\r\n                        <h2>ADD PRODUCT</h2>\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"productName\" placeholder=\"Product Name\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"textarea\" name=\"description\" placeholder=\"Description\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"type\" placeholder=\"Product Type\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"code\" placeholder=\"Product code\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"price\" placeholder=\"Price\" />\r\n                    </div>\r\n                    <div class=\"button-container\">\r\n                        <button type=\"submit\">ADD</button>\r\n                    </div>  \r\n                </form>\r\n                \r\n            </div>\r\n        </div>\r\n    </section> -->\r\n    <!-- <section>\r\n        <div class=\"form-container\">\r\n            <div class=\"form edit-product-form\" >\r\n                <form>\r\n                    <div class=\"title\">\r\n                        <h2>EDIT PRODUCT</h2>\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"productName\" placeholder=\"Product Name\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"textarea\" name=\"description\" placeholder=\"Description\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"text\" name=\"type\" placeholder=\"Product Type\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"code\" placeholder=\"Product code\" />\r\n                    </div>\r\n                    <div class=\"form-input\">\r\n                        <input type=\"number\" name=\"price\" placeholder=\"Price\" />\r\n                    </div>\r\n                    <div class=\"button-container\">\r\n                        <button type=\"submit\">UPDATE</button>\r\n                    </div>  \r\n                </form>\r\n                \r\n            </div>\r\n        </div>\r\n    </section> -->\r\n    <!-- <section>\r\n        <div class=\"product-detail-container\">\r\n            <div class=\"image-container\">\r\n                <div class=\"main-image\">\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                </div>\r\n                <div class=\"sub-image\">\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                    <img src=\"../../assets/images/futuristic-fingerprint-background_23-2148372642.jpg\"/>\r\n                </div>\r\n            </div>\r\n            <div class=\"details\">\r\n                <div class=\" details-header\">\r\n                    <div class=\"title\">\r\n                        <h2>\r\n                            Product Name\r\n                        </h2>\r\n                    </div>\r\n                    <div class=\"price\" >\r\n                        <label>Price: </label><span>$100</span>\r\n                    </div>\r\n                </div>\r\n                <div class=\"detail-description\">\r\n                    <div class=\"description\">\r\n                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n                    </div>\r\n                    <div class=\"type\" >\r\n                        <label>Type: </label><span>Product Type </span>\r\n                    </div>\r\n                    <div class=\"code\" >\r\n                        <label>Code: </label><span>Product code</span>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section> -->\r\n</div>"
+        },
+        {
+            "name": "SignUpComponent",
+            "id": "component-SignUpComponent-14512b058b1c2b5d007f6c2be8d181de",
+            "file": "src/app/sign-up/sign-up.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-sign-up",
+            "styleUrls": [
+                "./sign-up.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./sign-up.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "error",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "router",
+                    "type": "Router",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "userForm",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                },
+                {
+                    "name": "registerUser",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "description": "<p>registerUser: Resister user within Application.</p>\n",
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { FormGroup, FormControl, Validators } from '@angular/forms';\r\nimport { CoreService } from '../core/service/core.service';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-sign-up',\r\n  templateUrl: './sign-up.component.html',\r\n  styleUrls: ['./sign-up.component.scss']\r\n})\r\nexport class SignUpComponent implements OnInit {\r\n  public userForm: FormGroup;\r\n  public error = '';\r\n\r\n  constructor(private coreService: CoreService, public router: Router) { }\r\n\r\n  ngOnInit(): void {\r\n    this.userForm = new FormGroup({\r\n      firstName: new FormControl('', Validators.required),\r\n      lastName: new FormControl('', Validators.required),\r\n      email: new FormControl('', Validators.required),\r\n      mobileNumber: new FormControl(Validators.required),\r\n      address: new FormControl('', Validators.required),\r\n      password: new FormControl('', Validators.required),\r\n      confirmPassword: new FormControl('', Validators.required),\r\n    });\r\n  }\r\n\r\n  /**\r\n   * registerUser: Resister user within Application.\r\n   */\r\n  public registerUser(): void {\r\n    const requestBody = Object.assign({}, this.userForm.value);\r\n    delete requestBody.confirmPassword;\r\n    this.coreService.registerUser(requestBody).subscribe(data => {\r\n      if (data && data.accessToken) {\r\n        localStorage.setItem('accessToken', data.accessToken);\r\n        this.router.navigate(['home']);\r\n      } else {\r\n          this.error = data && data.errorResponse && data.errorResponse.error ? data.errorResponse.error : '';\r\n          setTimeout(() => {\r\n            this.error = '';\r\n          }, 3000);\r\n      }\r\n    });\r\n  }\r\n\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".form-container{\r\n    width: 100%;\r\n    height: 100%;\r\n    height: 88vh;\r\n    .form{\r\n        display: flex;\r\n        flex-direction: column;\r\n        justify-content: center;\r\n        align-items: center;\r\n        width: 100%;\r\n        height: 100%;\r\n        form{\r\n            background-color: #fff;\r\n            width: 25%;\r\n            min-height: 25rem;\r\n            padding : 2rem;\r\n            box-shadow: 1px 2px 3px rgba(0,0,0,0.2);\r\n            border-radius: 0.3rem;\r\n            display: flex;\r\n            flex-direction: column;\r\n            justify-content: center;\r\n            align-items: center;\r\n            .title{\r\n                margin-bottom: 2rem;\r\n                h2{\r\n                    color : #ff724c;\r\n                    font-size: 1.4rem;\r\n                }\r\n            }\r\n            .form-input{\r\n                width: 100%;\r\n                margin-bottom: 1.5rem;\r\n                text-align: center;\r\n                \r\n                input{\r\n                    width: 80%;\r\n                    height: 2rem;\r\n                    border-radius: 3rem;\r\n                    outline: unset;\r\n                    border : unset;\r\n                    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.2);\r\n                    padding : 0rem 1rem\r\n                }\r\n                \r\n            }\r\n            .button-container{\r\n                background-color: #ff724c;\r\n                text-align: center;\r\n                width: 80%;\r\n                height: 2rem;\r\n                line-height: 2rem;\r\n                border-radius: 3rem;\r\n                margin: 1rem 0;\r\n                button{\r\n                    color: #fff;\r\n                    font-weight: bold;\r\n                    outline: unset;\r\n                    background-color: unset;\r\n                    border: unset;\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./sign-up.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "coreService",
+                        "type": "CoreService"
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "coreService",
+                        "type": "CoreService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section>\r\n    <div class=\"form-container\">\r\n        <div class=\"form sign-form\">\r\n            <form [formGroup]=\"userForm\">\r\n                <div class=\"title\">\r\n                    <h2>SIGN UP</h2>\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"text\" name=\"firstName\" formControlName=\"firstName\" placeholder=\"First Name\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"text\" name=\"lastName\" formControlName=\"lastName\" placeholder=\"Last Name\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"text\" name=\"email\" formControlName=\"email\" placeholder=\"Email\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"number\" name=\"mobileNumber\" formControlName=\"mobileNumber\"\r\n                        placeholder=\"Mobile Number\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"text\" name=\"address\" formControlName=\"address\" placeholder=\"Address\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"password\" name=\"password\" formControlName=\"password\" placeholder=\"Password\" />\r\n                </div>\r\n                <div class=\"form-input\">\r\n                    <input type=\"password\" name=\"confirmPassword\" formControlName=\"confirmPassword\"\r\n                        placeholder=\"Confirm Password\" />\r\n                </div>\r\n                <span *ngIf=\"error\" [ngStyle]=\"{'color': 'red'}\">{{error}}</span>\r\n                <div class=\"button-container\">\r\n                    <button (click)=\"registerUser()\" [disabled]=\"!userForm.valid\" type=\"submit\">SIGN IN</button>\r\n                </div>\r\n            </form>\r\n\r\n        </div>\r\n    </div>\r\n</section>"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": [
+                        {
+                            "name": "CoreService"
+                        }
+                    ]
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "LoginComponent"
+                        },
+                        {
+                            "name": "SignUpComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductsModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AddProductComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
+                        },
+                        {
+                            "name": "InteriorPageComponent"
+                        },
+                        {
+                            "name": "ProductDetailComponent"
+                        },
+                        {
+                            "name": "ProductListingComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ProductsRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductsRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  production: true,\r\n  baseUrl: 'http://localhost:3000/',\r\n  productApi: 'products'\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false,\r\n  baseUrl: 'http://localhost:3000/',\r\n  productApi: 'products'\r\n}"
+            },
+            {
+                "name": "getProductListInOrder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/products/store/products.selector.ts",
+                "type": "",
+                "defaultValue": "createSelector(getProductsList, (state: ProductsState) => {\r\n    return state.productsList;\r\n})"
+            },
+            {
+                "name": "getProductsList",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/products/store/products.selector.ts",
+                "type": "",
+                "defaultValue": "createFeatureSelector('ProductsReducer')"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+            }
+        ],
+        "functions": [
+            {
+                "name": "ProductsReducer",
+                "file": "src/app/products/store/products.reducer.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "state"
+                    },
+                    {
+                        "name": "action"
+                    }
+                ],
+                "returnType": "ProductsState",
+                "jsdoctags": [
+                    {
+                        "name": "state",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "action",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "ProductsActionAction",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "GetProductsList | GetProductsListSuccess",
+                "file": "src/app/products/store/products.action.ts",
+                "description": "",
+                "kind": 168
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "ProductsActionType",
+                "childs": [
+                    {
+                        "name": "GET_PRODUCTS_LIST",
+                        "value": "GET_PRODUCTS_LIST"
+                    },
+                    {
+                        "name": "GET_PRODUCTS_LIST_SUCCESS",
+                        "value": "GET_PRODUCTS_LIST_SUCCESS"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "src/app/products/store/products.action.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: true,\r\n  baseUrl: 'http://localhost:3000/',\r\n  productApi: 'products'\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false,\r\n  baseUrl: 'http://localhost:3000/',\r\n  productApi: 'products'\r\n}"
+                }
+            ],
+            "src/app/products/store/products.selector.ts": [
+                {
+                    "name": "getProductListInOrder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/products/store/products.selector.ts",
+                    "type": "",
+                    "defaultValue": "createSelector(getProductsList, (state: ProductsState) => {\r\n    return state.productsList;\r\n})"
+                },
+                {
+                    "name": "getProductsList",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/products/store/products.selector.ts",
+                    "type": "",
+                    "defaultValue": "createFeatureSelector('ProductsReducer')"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "src/app/products/store/products.reducer.ts": [
+                {
+                    "name": "ProductsReducer",
+                    "file": "src/app/products/store/products.reducer.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "state"
+                        },
+                        {
+                            "name": "action"
+                        }
+                    ],
+                    "returnType": "ProductsState",
+                    "jsdoctags": [
+                        {
+                            "name": "state",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "action",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "src/app/products/store/products.action.ts": [
+                {
+                    "name": "ProductsActionType",
+                    "childs": [
+                        {
+                            "name": "GET_PRODUCTS_LIST",
+                            "value": "GET_PRODUCTS_LIST"
+                        },
+                        {
+                            "name": "GET_PRODUCTS_LIST_SUCCESS",
+                            "value": "GET_PRODUCTS_LIST_SUCCESS"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "src/app/products/store/products.action.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/app/products/store/products.action.ts": [
+                {
+                    "name": "ProductsActionAction",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "GetProductsList | GetProductsListSuccess",
+                    "file": "src/app/products/store/products.action.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "loadChildren": "./products/products.module#ProductsModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/products/products-routing.module.ts",
+                                        "module": "ProductsRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "InteriorPageComponent",
+                                                "children": [
+                                                    {
+                                                        "path": "",
+                                                        "redirectTo": "home",
+                                                        "pathMatch": "full"
+                                                    },
+                                                    {
+                                                        "path": "home",
+                                                        "component": "ProductListingComponent"
+                                                    },
+                                                    {
+                                                        "path": "add-product",
+                                                        "component": "AddProductComponent",
+                                                        "canActivate": [
+                                                            "AuthGuard"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "path": "view-details/:id",
+                                                        "component": "ProductDetailComponent"
+                                                    },
+                                                    {
+                                                        "path": "edit-product/:id",
+                                                        "component": "AddProductComponent",
+                                                        "canActivate": [
+                                                            "AuthGuard"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "ProductsModule"
+                            }
+                        ]
+                    },
+                    {
+                        "path": "login",
+                        "component": "LoginComponent"
+                    },
+                    {
+                        "path": "sign-up",
+                        "component": "SignUpComponent"
+                    },
+                    {
+                        "path": "**",
+                        "redirectTo": "login"
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 7,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/auth/auth.guard.ts",
+                "type": "guard",
+                "linktype": "guard",
+                "name": "AuthGuard",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/components/interior-page/interior-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InteriorPageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/core/service/core.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CoreService",
+                "coveragePercent": 33,
+                "coverageCount": "2/6",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/login/login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginComponent",
+                "coveragePercent": 25,
+                "coverageCount": "2/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/components/add-product/add-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AddProductComponent",
+                "coveragePercent": 16,
+                "coverageCount": "2/12",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/components/product-detail/product-detail.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductDetailComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/components/product-listing/product-listing.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductListingComponent",
+                "coveragePercent": 33,
+                "coverageCount": "5/15",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/products/service/product.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ProductService",
+                "coveragePercent": 55,
+                "coverageCount": "5/9",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/products/store/products.action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "GetProductsList",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.action.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "GetProductsListSuccess",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.effects.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ProductsListEffect",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.model.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ProductsState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.reducer.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "ProductsReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProductListInOrder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/products/store/products.selector.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProductsList",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/button.element.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CustomButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sign-up/sign-up.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SignUpComponent",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            }
+        ]
+    }
+}
