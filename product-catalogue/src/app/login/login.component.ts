@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public error = '';
 
-  constructor(private coreService: CoreService, public router: Router) { }
+  constructor(public coreService: CoreService, public router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
    */
   public login(): void {
     const requestBody = Object.assign({}, this.loginForm.value);
+    console.log(this.coreService);
     this.coreService.login(requestBody).subscribe(data => {
       if (data && data.accessToken) {
         localStorage.setItem('accessToken', data.accessToken);

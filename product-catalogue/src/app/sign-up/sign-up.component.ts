@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      mobileNumber: new FormControl(Validators.required),
+      mobileNumber: new FormControl(0, Validators.required),
       address: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
@@ -37,10 +37,10 @@ export class SignUpComponent implements OnInit {
         localStorage.setItem('accessToken', data.accessToken);
         this.router.navigate(['home']);
       } else {
-          this.error = data && data.errorResponse && data.errorResponse.error ? data.errorResponse.error : '';
-          setTimeout(() => {
-            this.error = '';
-          }, 3000);
+        this.error = data && data.errorResponse && data.errorResponse.error ? data.errorResponse.error : '';
+        setTimeout(() => {
+          this.error = '';
+        }, 3000);
       }
     });
   }
