@@ -10,11 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductsReducer } from './products/store/products.reducer';
 import { ProductsListEffect } from './products/store/products.effects';
 
+import { CoreReducer } from './core/store/core.reducer';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 import { CoreService } from './../app/core/service/core.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,16 +29,16 @@ import { CoreService } from './../app/core/service/core.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, CommonModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ ProductsReducer },
+    StoreModule.forRoot({ CoreReducer },
       {
         runtimeChecks: {
           strictStateImmutability: false,
           strictActionImmutability: false,
         }
       }),
-    EffectsModule.forRoot([ProductsListEffect]),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'Store DevTools',
     }),

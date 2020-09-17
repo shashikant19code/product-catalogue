@@ -12,8 +12,8 @@
                         <input type="password" name="password" formControlName="password" placeholder="Password" />
                     </div>
                     <span *ngIf="error" [ngStyle]="{'color': 'red'}">{{error}}</span>
-                    <!-- <custom-button (click)="login()" buttonName="Sign In" className="custom-button"></custom-button>                    
-                    <custom-button buttonName="Sign Up" (click)="signUp()" className="custom-button"></custom-button> -->
+                    <custom-button (click)="login()" buttonName="Sign In" className="custom-button"></custom-button>                    
+                    <custom-button buttonName="Sign Up" (click)="signUp()" className="custom-button"></custom-button>
                 </form>                
             </div>
         </div>

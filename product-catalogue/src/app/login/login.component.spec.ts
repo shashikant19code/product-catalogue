@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterModule } from '@angular/router';
 import { CoreService } from '../core/service/core.service';
 import { CommonModule } from '@angular/common';
@@ -12,25 +13,32 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let coreServiceMock: any;
+  let coreServiceMock: CoreService;
+  let service: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule],
-      providers: [{
-        provide: CoreService
-      }]
+      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule,HttpClientTestingModule],
+      providers: [ CoreService]
     })
       .compileComponents();
-      fixture = TestBed.createComponent(LoginComponent);
-      component = fixture.componentInstance;
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
   }));
 
   beforeEach(() => {
     fixture.detectChanges();
+    // service = TestBed.get(coreServiceMock);
+    // console.log(service);
     component.ngOnInit();
   });
+
+  // it('should select preferences$ from the store with undefined', () => {
+  //   component.ngOnInit();
+  //   const spy = jest.fn();
+  //   expect(spy).toHaveBeenCalledWith({});
+  // });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
@@ -64,6 +72,7 @@ describe('LoginComponent', () => {
     it('should not login the user', () => {
       component.loginForm.controls['email'].setValue('');
       component.loginForm.controls['password'].setValue('');
+
     });
 
     it('should login the user', () => {

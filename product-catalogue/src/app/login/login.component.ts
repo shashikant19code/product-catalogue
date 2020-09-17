@@ -26,18 +26,19 @@ export class LoginComponent implements OnInit {
    */
   public login(): void {
     const requestBody = Object.assign({}, this.loginForm.value);
-    console.log(this.coreService);
-    this.coreService.login(requestBody).subscribe(data => {
-      if (data && data.accessToken) {
-        localStorage.setItem('accessToken', data.accessToken);
-        this.router.navigate(['home']);
-      } else {
+    if (this.loginForm.value && this.loginForm.value['email'] && this.loginForm.value['password']) {
+      this.coreService.login(requestBody).subscribe(data => {
+        if (data && data.accessToken) {
+          localStorage.setItem('accessToken', data.accessToken);
+          this.router.navigate(['home']);
+        } else {
           this.error = data && data.errorResponse && data.errorResponse.error ? data.errorResponse.error : '';
           setTimeout(() => {
             this.error = '';
           }, 3000);
-      }
-    });
+        }
+      });
+    }
   }
 
   /**

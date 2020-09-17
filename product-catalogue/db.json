@@ -25,5 +25,15 @@
       "id": 6
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "shashikant.kalaskar@apptware.com",
+      "password": "$2a$10$zwJW/VPvIIQlUC9DKaQgUurRrydF2pI0eiWDeltNNF3oPeuxVZGka",
+      "firstName": "Shashikant",
+      "lastName": "Kalaskar",
+      "mobileNumber": 9087676756,
+      "address": "Pune",
+      "id": 1
+    }
+  ]
 }

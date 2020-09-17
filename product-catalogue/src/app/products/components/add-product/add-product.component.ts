@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
@@ -8,6 +8,7 @@ import { ProductService } from './../../service/product.service';
 import { AppState } from './../../../app.model';
 import { getProductListInOrder } from '../../store/products.selector';
 import { GetProductsList } from '../../store/products.action';
+import { getDayNightMode } from 'src/app/core/store/core.selector';
 
 @Component({
   selector: 'app-add-product',
@@ -15,6 +16,8 @@ import { GetProductsList } from '../../store/products.action';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
+  @ViewChild('themeContainer', { static: false }) themeContainer: ElementRef;
+
   public productForm: FormGroup;
   public productSub: Subscription;
   public isEditProduct = false;
@@ -22,9 +25,10 @@ export class AddProductComponent implements OnInit {
   public allProducts: any = [];
 
   public getproductsList$: Observable<any> = this.store.select(getProductListInOrder);
+  public dayNightMode$ = this.store.select(getDayNightMode);
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
-              private router: Router, public store: Store<AppState>) { }
+    private router: Router, public store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
@@ -51,6 +55,14 @@ export class AddProductComponent implements OnInit {
             this.getProductInfo(params.id);
           }
         });
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dayNightMode$.subscribe(mode => {
+      if (mode) {
+        this.themeContainer.nativeElement.className = mode.mode ? 'theme-container dark' : 'theme-container light';
       }
     });
   }

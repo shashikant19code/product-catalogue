@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -7,6 +7,7 @@ import { AppState } from './../../../app.model';
 import { ProductService } from './../../service/product.service';
 import { GetProductsList } from '../../store/products.action';
 import { getProductListInOrder } from './../../store/products.selector';
+import { getDayNightMode } from 'src/app/core/store/core.selector';
 
 @Component({
   selector: 'app-product-listing',
@@ -14,12 +15,14 @@ import { getProductListInOrder } from './../../store/products.selector';
   styleUrls: ['./product-listing.component.scss']
 })
 export class ProductListingComponent implements OnInit, OnDestroy {
+  @ViewChild('themeContainer', { static: false }) themeContainer: ElementRef;
   public allProducts: any = [];
   public allProductsSub: Subscription;
   public deleteProductSub: Subscription;
   public isShow = false;
 
   public getproductsList$: Observable<any> = this.store.select(getProductListInOrder);
+  public dayNightMode$: Observable<any> = this.store.select(getDayNightMode);
 
   constructor(public router: Router, private productService: ProductService, public store: Store<AppState>) { }
 
@@ -33,6 +36,14 @@ export class ProductListingComponent implements OnInit, OnDestroy {
         this.allProducts = data;
       } else {
         this.store.dispatch(new GetProductsList({}));
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    this.dayNightMode$.subscribe(mode => {
+      if (mode) {
+        this.themeContainer.nativeElement.className = mode.mode ? 'theme-container dark' : 'theme-container light';
       }
     });
   }
